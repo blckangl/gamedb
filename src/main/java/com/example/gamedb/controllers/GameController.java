@@ -2,6 +2,8 @@ package com.example.gamedb.controllers;
 
 
 import com.example.gamedb.models.Game;
+import com.example.gamedb.services.GameService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -11,65 +13,42 @@ import java.util.UUID;
 @RequestMapping("/games")
 public class GameController {
 
-    ArrayList<Game> gameList = new ArrayList<>();
 
-    public GameController() {
-        gameList.add(new Game(1, "wow", "mmorpg game", "", ""));
-        gameList.add(new Game(2, "fallout", "rpg game", "", ""));
-        gameList.add(new Game(3, "god of war", "action game", "", ""));
+//    @Autowired
+//    GameService gameService;
+  GameService gameService;
+
+    public GameController(GameService gameService) {
+        this.gameService = gameService;
     }
 
     @GetMapping()
     public ArrayList<Game> Index() {
-        return this.gameList;
+        return gameService.getGames();
     }
 
     @GetMapping("/{id}")
-    public Game getGameById(@PathVariable String id) {
-        Game tempGame = null;
-        for (Game game : gameList
-        ) {
-            if (game.getUuid() == Integer.parseInt(id)) {
-                tempGame = game;
-
-                return game;
-            }
-        }
-        return tempGame;
+    public Game getGameById(@PathVariable int id) {
+        return gameService.getGameById(id);
     }
 
     @PostMapping()
-    public ArrayList<Game> addGame(@RequestBody Game game) {
-        this.gameList.add(game);
-        return gameList;
+    public Game addGame(@RequestBody Game game) {
+
+        return gameService.createGame(game);
     }
 
 
     @PutMapping("{id}")
-    public ArrayList<Game> updateGame(@RequestBody Game game, @PathVariable int id) {
-        Game gameToUpdate = gameList.stream().filter(x -> x.getUuid() == id).findFirst().orElse(null);
-        if (gameToUpdate != null) {
-            int index = gameList.indexOf(gameToUpdate);
+    public Game updateGame(@RequestBody Game game, @PathVariable int id) {
 
-            if (game.getTitle() != null) {
-                gameToUpdate.setTitle(game.getTitle());
-            }
-            if (game.getPicture() != null) {
-                gameToUpdate.setPicture(game.getPicture());
-            }
-            if (game.getCover_picture() != null) {
-                gameToUpdate.setCover_picture(game.getCover_picture());
-            }
-            if (game.getDescription() != null) {
-                gameToUpdate.setDescription(game.getDescription());
-            }
+        return gameService.updateGame(id, game);
+    }
 
-            gameList.set(index, gameToUpdate);
 
-            return gameList;
+    @DeleteMapping("{id}")
+    public Game deleteGame(@PathVariable int id) {
+        return gameService.deleteGame(id);
 
-        } else {
-            return null;
-        }
     }
 }
