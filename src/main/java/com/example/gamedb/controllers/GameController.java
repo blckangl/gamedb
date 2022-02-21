@@ -11,6 +11,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/games")
+@CrossOrigin("*")
 public class GameController {
 
 
