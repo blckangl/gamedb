@@ -8,7 +8,8 @@ public interface GameService {
 
     ArrayList<Game> getGames();
 
-    Game getGameById(int id);
+    Game getGameById(long id);
+    Game getGameByTitle(String title);
 
     Game updateGame(int id, Game game);
 

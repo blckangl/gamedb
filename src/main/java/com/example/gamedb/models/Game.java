@@ -1,26 +1,49 @@
 package com.example.gamedb.models;
 
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.ManyToAny;
+import org.hibernate.annotations.Type;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+@Entity
 public class Game {
-    private int uuid;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     private String title;
+    @Type(type = "text")
     private String description;
     private String cover_picture;
     private String picture;
 
-    public Game(int uuid, String title, String description, String cover_picture, String picture) {
-        this.uuid = uuid;
+    @OneToMany(fetch = FetchType.EAGER)
+    private Collection<Genre> genres = new ArrayList<Genre>();
+
+
+    public Game(long id, String title, String description, String cover_picture, String picture) {
+        this.id = id;
         this.title = title;
         this.description = description;
         this.cover_picture = cover_picture;
         this.picture = picture;
     }
 
-    public int getUuid() {
-        return uuid;
+    public Game() {
+
     }
 
-    public void setUuid(int uuid) {
-        this.uuid = uuid;
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -54,4 +77,6 @@ public class Game {
     public void setPicture(String picture) {
         this.picture = picture;
     }
+
+
 }

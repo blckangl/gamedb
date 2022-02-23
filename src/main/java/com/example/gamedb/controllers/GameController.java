@@ -15,9 +15,9 @@ import java.util.UUID;
 public class GameController {
 
 
-//    @Autowired
+    //    @Autowired
 //    GameService gameService;
-  GameService gameService;
+    GameService gameService;
 
     public GameController(GameService gameService) {
         this.gameService = gameService;
@@ -32,6 +32,12 @@ public class GameController {
     public Game getGameById(@PathVariable int id) {
         return gameService.getGameById(id);
     }
+
+    @GetMapping("/title/{title}")
+    public Game getGameByTitle(@PathVariable String title) {
+        return gameService.getGameByTitle(title);
+    }
+
 
     @PostMapping()
     public Game addGame(@RequestBody Game game) {
