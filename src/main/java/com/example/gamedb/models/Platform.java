@@ -1,9 +1,11 @@
 package com.example.gamedb.models;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+@Entity
 public class Platform {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
