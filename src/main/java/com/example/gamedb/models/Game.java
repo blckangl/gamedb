@@ -25,13 +25,23 @@ public class Game {
     @OneToMany(fetch = FetchType.EAGER)
     private Collection<Genre> genres = new ArrayList<Genre>();
 
+    @OneToMany(fetch = FetchType.EAGER)
+    private Collection<Platform> platforms = new ArrayList<Platform>();
 
-    public Game(long id, String title, String description, String cover_picture, String picture) {
+    @OneToMany(fetch = FetchType.EAGER)
+    private Collection<Category> categories = new ArrayList<Category>();
+
+
+
+    public Game(long id, String title, String description, String cover_picture, String picture, Collection<Genre> genres, Collection<Platform> platforms, Collection<Category> categories) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.cover_picture = cover_picture;
         this.picture = picture;
+        this.genres = genres;
+        this.platforms = platforms;
+        this.categories = categories;
     }
 
     public Game() {
@@ -78,5 +88,27 @@ public class Game {
         this.picture = picture;
     }
 
+    public Collection<Genre> getGenres() {
+        return genres;
+    }
 
+    public void setGenres(Collection<Genre> genres) {
+        this.genres = genres;
+    }
+
+    public Collection<Platform> getPlatforms() {
+        return platforms;
+    }
+
+    public void setPlatforms(Collection<Platform> platforms) {
+        this.platforms = platforms;
+    }
+
+    public Collection<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Collection<Category> categories) {
+        this.categories = categories;
+    }
 }
