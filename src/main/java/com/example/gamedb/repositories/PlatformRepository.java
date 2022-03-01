@@ -2,6 +2,8 @@ package com.example.gamedb.repositories;
 
 import com.example.gamedb.models.Platform;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface PlatformRepository extends JpaRepository<Long, Platform> {
+@Repository
+public interface PlatformRepository extends JpaRepository<Platform,Long> {
 }

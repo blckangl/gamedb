@@ -22,13 +22,13 @@ public class Game {
     private String cover_picture;
     private String picture;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.LAZY)
     private Collection<Genre> genres = new ArrayList<Genre>();
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.LAZY)
     private Collection<Platform> platforms = new ArrayList<Platform>();
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.LAZY)
     private Collection<Category> categories = new ArrayList<Category>();
 
 
