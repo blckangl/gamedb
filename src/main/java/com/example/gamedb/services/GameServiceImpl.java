@@ -25,6 +25,7 @@ public class GameServiceImpl implements GameService {
 
     }
 
+
     @Override
     public Game getGameById(long id) {
         return gameRepository.findById(id).orElse(null);
@@ -33,25 +34,26 @@ public class GameServiceImpl implements GameService {
     @Override
     public Game getGameByTitle(String title) {
         Game game = gameRepository.findByTitle(title);
-        if(game != null){
+        if (game != null) {
             return game;
         }
         return null;
     }
 
     @Override
-    public Game updateGame(int id, Game game) {
+    public Game updateGame(long id, Game game) {
         return null;
     }
 
     @Override
-    public Game deleteGame(int id) {
+    public Game deleteGame(long id) {
         return null;
     }
 
     @Override
     public Game createGame(Game game) {
-        return null;
+
+        return gameRepository.save(game);
     }
 //
 //    @Override
