@@ -2,6 +2,7 @@ package com.example.gamedb.requests;
 
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class GameBody {
 
@@ -17,10 +18,13 @@ public class GameBody {
 
     private ArrayList<Long> categories = new ArrayList<Long>();
 
+    private Date release_date;
+
+
     public GameBody() {
     }
 
-    public GameBody(long id, String title, String description, String cover_picture, String picture, ArrayList<Long> genres, ArrayList<Long> platforms, ArrayList<Long> categories) {
+    public GameBody(long id, String title, String description, String cover_picture, String picture, ArrayList<Long> genres, ArrayList<Long> platforms, ArrayList<Long> categories, Date release_date) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -29,6 +33,15 @@ public class GameBody {
         this.genres = genres;
         this.platforms = platforms;
         this.categories = categories;
+        this.release_date = release_date;
+    }
+
+    public Date getRelease_date() {
+        return release_date;
+    }
+
+    public void setRelease_date(Date release_date) {
+        this.release_date = release_date;
     }
 
     public long getId() {

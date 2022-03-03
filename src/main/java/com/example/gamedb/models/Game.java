@@ -1,6 +1,7 @@
 package com.example.gamedb.models;
 
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.ManyToAny;
 import org.hibernate.annotations.Type;
@@ -8,6 +9,7 @@ import org.hibernate.annotations.Type;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -22,18 +24,22 @@ public class Game {
     private String cover_picture;
     private String picture;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     private Collection<Genre> genres = new ArrayList<Genre>();
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     private Collection<Platform> platforms = new ArrayList<Platform>();
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     private Collection<Category> categories = new ArrayList<Category>();
 
+    @CreationTimestamp
+    private Date created_at;
+
+    private Date release_date;
 
 
-    public Game(long id, String title, String description, String cover_picture, String picture, Collection<Genre> genres, Collection<Platform> platforms, Collection<Category> categories) {
+    public Game(long id, String title, String description, String cover_picture, String picture, Collection<Genre> genres, Collection<Platform> platforms, Collection<Category> categories, Date created_at, Date release_date) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -42,10 +48,28 @@ public class Game {
         this.genres = genres;
         this.platforms = platforms;
         this.categories = categories;
+        this.created_at = created_at;
+        this.release_date = release_date;
     }
 
     public Game() {
 
+    }
+
+    public Date getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(Date created_at) {
+        this.created_at = created_at;
+    }
+
+    public Date getRelease_date() {
+        return release_date;
+    }
+
+    public void setRelease_date(Date release_date) {
+        this.release_date = release_date;
     }
 
     public long getId() {

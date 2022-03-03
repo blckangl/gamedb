@@ -54,7 +54,7 @@ public class GameController {
 
 
     @PostMapping()
-    public GameBody addGame(@RequestBody GameBody game) {
+    public Game addGame(@RequestBody GameBody game) {
 
         ArrayList<Platform> platforms = new ArrayList<Platform>();
         ArrayList<Genre> genres = new ArrayList<Genre>();
@@ -67,24 +67,33 @@ public class GameController {
                 categories.add(category);
             }
         }
-        for (int i = 0; i < game.getCategories().size(); i++) {
+        for (int i = 0; i < game.getPlatforms().size(); i++) {
             Long plat = game.getPlatforms().get(i);
             Platform platform = platformService.getById(plat);
             if (platform != null) {
                 platforms.add(platform);
             }
         }
-        for (int i = 0; i < game.getCategories().size(); i++) {
+        for (int i = 0; i < game.getGenres().size(); i++) {
             Long gen = game.getGenres().get(i);
             Genre genre = genreService.getById(gen);
             if (genre != null) {
                 genres.add(genre);
             }
         }
+        Game gameObj = new Game();
+        gameObj.setTitle(game.getTitle());
+        gameObj.setDescription(game.getDescription());
+        gameObj.setPicture(game.getPicture());
+        gameObj.setCover_picture(game.getCover_picture());
+        gameObj.setPlatforms(platforms);
+        gameObj.setCategories(categories);
+        gameObj.setGenres(genres);
+        gameObj.setRelease_date(game.getRelease_date());
 
 
-//        gameService.createGame(game)
-        return game;
+        return gameService.createGame(gameObj);
+
     }
 
 
