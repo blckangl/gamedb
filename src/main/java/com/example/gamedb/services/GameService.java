@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public interface GameService {
 
     ArrayList<Game> getGames();
+    ArrayList<Game> getRecentlyAddedGames();
 
 
     Game getGameById(long id);

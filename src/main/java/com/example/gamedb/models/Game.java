@@ -34,12 +34,14 @@ public class Game {
     private Collection<Category> categories = new ArrayList<Category>();
 
     @CreationTimestamp
-    private Date created_at;
+    @Column(name = "created_at")
+    private Date createdAt;
 
-    private Date release_date;
+    @Column(name = "release_date")
+    private Date releaseDate;
 
 
-    public Game(long id, String title, String description, String cover_picture, String picture, Collection<Genre> genres, Collection<Platform> platforms, Collection<Category> categories, Date created_at, Date release_date) {
+    public Game(long id, String title, String description, String cover_picture, String picture, Collection<Genre> genres, Collection<Platform> platforms, Collection<Category> categories, Date createdAt, Date releaseDate) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -48,8 +50,8 @@ public class Game {
         this.genres = genres;
         this.platforms = platforms;
         this.categories = categories;
-        this.created_at = created_at;
-        this.release_date = release_date;
+        this.createdAt = createdAt;
+        this.releaseDate = releaseDate;
     }
 
     public Game() {
@@ -57,19 +59,19 @@ public class Game {
     }
 
     public Date getCreated_at() {
-        return created_at;
+        return createdAt;
     }
 
     public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
+        this.createdAt = created_at;
     }
 
     public Date getRelease_date() {
-        return release_date;
+        return releaseDate;
     }
 
     public void setRelease_date(Date release_date) {
-        this.release_date = release_date;
+        this.releaseDate = release_date;
     }
 
     public long getId() {

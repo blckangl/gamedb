@@ -36,15 +36,21 @@ public class GameController {
         this.gameService = gameService;
     }
 
+//    @GetMapping()
+//    public ArrayList<Game> Index() {
+//        return gameService.getGames();
+//    }
+
     @GetMapping()
-    public ArrayList<Game> Index() {
-        return gameService.getGames();
+    public ArrayList<Game> getAddedGame() {
+        return gameService.getRecentlyAddedGames();
     }
 
     @GetMapping("/{id}")
     public Game getGameById(@PathVariable int id) {
         return gameService.getGameById(id);
     }
+
 
     @GetMapping("/title/{title}")
     public Game getGameByTitle(@PathVariable String title) {
