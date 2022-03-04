@@ -41,9 +41,13 @@ public class GameController {
 //        return gameService.getGames();
 //    }
 
-    @GetMapping()
+    @GetMapping("/added")
     public ArrayList<Game> getAddedGame() {
         return gameService.getRecentlyAddedGames();
+    }
+    @GetMapping("/released")
+    public ArrayList<Game> getReleasedGame() {
+        return gameService.getRecentlyReleasedGames();
     }
 
     @GetMapping("/{id}")
@@ -91,11 +95,11 @@ public class GameController {
         gameObj.setTitle(game.getTitle());
         gameObj.setDescription(game.getDescription());
         gameObj.setPicture(game.getPicture());
-        gameObj.setCover_picture(game.getCover_picture());
+        gameObj.setCoverPicture(game.getCover_picture());
         gameObj.setPlatforms(platforms);
         gameObj.setCategories(categories);
         gameObj.setGenres(genres);
-        gameObj.setRelease_date(game.getRelease_date());
+        gameObj.setReleaseDate(game.getRelease_date());
 
 
         return gameService.createGame(gameObj);

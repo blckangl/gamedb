@@ -21,7 +21,8 @@ public class Game {
     private String title;
     @Type(type = "text")
     private String description;
-    private String cover_picture;
+    @Column(name = "cover_picture")
+    private String coverPicture;
     private String picture;
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -41,11 +42,11 @@ public class Game {
     private Date releaseDate;
 
 
-    public Game(long id, String title, String description, String cover_picture, String picture, Collection<Genre> genres, Collection<Platform> platforms, Collection<Category> categories, Date createdAt, Date releaseDate) {
+    public Game(long id, String title, String description, String coverPicture, String picture, Collection<Genre> genres, Collection<Platform> platforms, Collection<Category> categories, Date createdAt, Date releaseDate) {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.cover_picture = cover_picture;
+        this.coverPicture = coverPicture;
         this.picture = picture;
         this.genres = genres;
         this.platforms = platforms;
@@ -58,20 +59,20 @@ public class Game {
 
     }
 
-    public Date getCreated_at() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreated_at(Date created_at) {
-        this.createdAt = created_at;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public Date getRelease_date() {
+    public Date getReleaseDate() {
         return releaseDate;
     }
 
-    public void setRelease_date(Date release_date) {
-        this.releaseDate = release_date;
+    public void setReleaseDate(Date releaseDate) {
+        this.releaseDate = releaseDate;
     }
 
     public long getId() {
@@ -98,12 +99,12 @@ public class Game {
         this.description = description;
     }
 
-    public String getCover_picture() {
-        return cover_picture;
+    public String getCoverPicture() {
+        return coverPicture;
     }
 
-    public void setCover_picture(String cover_picture) {
-        this.cover_picture = cover_picture;
+    public void setCoverPicture(String coverPicture) {
+        this.coverPicture = coverPicture;
     }
 
     public String getPicture() {

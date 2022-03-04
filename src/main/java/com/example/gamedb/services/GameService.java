@@ -8,6 +8,7 @@ public interface GameService {
 
     ArrayList<Game> getGames();
     ArrayList<Game> getRecentlyAddedGames();
+    ArrayList<Game> getRecentlyReleasedGames();
 
 
     Game getGameById(long id);

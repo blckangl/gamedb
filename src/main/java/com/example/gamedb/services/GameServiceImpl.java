@@ -27,7 +27,12 @@ public class GameServiceImpl implements GameService {
 
     @Override
     public ArrayList<Game> getRecentlyAddedGames() {
-        return new ArrayList<>(gameRepository.findAllByOrderByCreatedAt());
+        return new ArrayList<>(gameRepository.findTop4ByOrderByCreatedAtDesc());
+    }
+
+    @Override
+    public ArrayList<Game> getRecentlyReleasedGames() {
+        return new ArrayList<>(gameRepository.getRecenlyReleased());
     }
 
 
