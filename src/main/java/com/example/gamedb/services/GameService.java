@@ -7,11 +7,16 @@ import java.util.ArrayList;
 public interface GameService {
 
     ArrayList<Game> getGames();
+
     ArrayList<Game> getRecentlyAddedGames();
+
     ArrayList<Game> getRecentlyReleasedGames();
+
+    ArrayList<Game> getFiltred(long catId);
 
 
     Game getGameById(long id);
+
     Game getGameByTitle(String title);
 
     Game updateGame(long id, Game game);

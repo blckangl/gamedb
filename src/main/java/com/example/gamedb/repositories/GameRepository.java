@@ -15,7 +15,9 @@ public interface GameRepository extends JpaRepository<Game, Long> {
     //    ArrayList<Game> findTop5ByOrderByCreated_at();
     ArrayList<Game> findTop4ByOrderByCreatedAtDesc();
 
-    @Query(value = "select * from game ORDER BY release_date DESC LIMIT 4",nativeQuery = true)
+    @Query(value = "select * from game ORDER BY release_date DESC LIMIT 4", nativeQuery = true)
     ArrayList<Game> getRecenlyReleased();
+
+    ArrayList<Game> findAllByCategoriesIdOrderByReleaseDateDesc(long id);
 
 }

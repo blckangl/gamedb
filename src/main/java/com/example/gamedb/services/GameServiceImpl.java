@@ -35,6 +35,11 @@ public class GameServiceImpl implements GameService {
         return new ArrayList<>(gameRepository.getRecenlyReleased());
     }
 
+    @Override
+    public ArrayList<Game> getFiltred(long catId) {
+        return new ArrayList<>(gameRepository.findAllByCategoriesIdOrderByReleaseDateDesc(catId));
+    }
+
 
     @Override
     public Game getGameById(long id) {
