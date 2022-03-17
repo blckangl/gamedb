@@ -36,11 +36,10 @@ public class GameController {
         this.gameService = gameService;
     }
 
-    @GetMapping("/filter/{catId}")
-    public ArrayList<Game> Index(@PathVariable long catId) {
+    @GetMapping("/filter")
+    public ArrayList<Game> Index(@RequestParam(required = false) String term,@RequestParam(required = false) Long catId,@RequestParam(required = false) Long platId,@RequestParam(required = false) Long genreId) {
 
-
-        return gameService.getFiltred(catId);
+        return gameService.getFiltred(catId,platId,genreId,term);
     }
 
     @GetMapping("/added")

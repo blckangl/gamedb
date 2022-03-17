@@ -12,7 +12,7 @@ public interface GameService {
 
     ArrayList<Game> getRecentlyReleasedGames();
 
-    ArrayList<Game> getFiltred(long catId);
+    ArrayList<Game> getFiltred(Long catId,Long platId,Long genreId,String term);
 
 
     Game getGameById(long id);

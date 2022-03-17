@@ -36,8 +36,8 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    public ArrayList<Game> getFiltred(long catId) {
-        return new ArrayList<>(gameRepository.findAllByCategoriesIdOrderByReleaseDateDesc(catId));
+    public ArrayList<Game> getFiltred(Long catId,Long platId, Long genreId,String term) {
+        return new ArrayList<>(gameRepository.filter(catId,platId,genreId,term));
     }
 
 
