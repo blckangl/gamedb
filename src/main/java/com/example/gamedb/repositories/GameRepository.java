@@ -20,7 +20,7 @@ public interface GameRepository extends JpaRepository<Game, Long> {
     ArrayList<Game> getRecenlyReleased();
 
 
-    @Query("select g from Game g join g.categories c join g.platforms p join g.genres ge where (:catId is null or c.id =:catId) and (:platId is null or p.id = :platId) and (:genreId is null or ge.id = :genreId) and (:term is null or g.title like %:term%) order by g.releaseDate desc")
+    @Query("select g from Game g join g.categories c join g.platforms p join g.genres ge where (:catId is null or c.id =:catId) and (:platId is null or p.id = :platId) and (:genreId is null or ge.id = :genreId) and (:term is null or (g.title like %:term% or g.description like %:term%)) order by g.releaseDate desc")
     ArrayList<Game> filter(@Param("catId") Long categoryId,@Param("platId") Long platformId,@Param("genreId") Long genreId,@Param("term") String term);
 
 }
